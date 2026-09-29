@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ComicCraft - Comic Preview</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+        }
+
+        .comic-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .panel {
+            background: white;
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .panel h2 {
+            color: #6c2bd9;
+        }
+
+        .panel img {
+            width: 100%;
+            max-width: 768px;
+            display: block;
+            margin: 15px auto;
+            border-radius: 10px;
+        }
+
+        .scene {
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .story {
+            white-space: pre-line;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="comic-container">
+
+    <h1>✨ ComicCraft - Comic Preview ✨</h1>
+
+    {% for panel in outline %}
+
+    <div class="panel">
+
+        <h2>
+            Panel {{ panel.panel }} -
+            {{ panel.title }}
+        </h2>
+
+        <img
+            src="/static/panels/panel_{{ panel.panel }}.png"
+        >
+
+        <div class="scene">
+            <strong>Scene:</strong>
+            <p>{{ panel.scene_description }}</p>
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+    <div class="panel">
+
+        <h2>📖 Story</h2>
+
+        <div class="story">
+            {{ story_text }}
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
